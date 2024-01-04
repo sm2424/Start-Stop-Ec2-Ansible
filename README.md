@@ -81,7 +81,8 @@ Step3: Add the ansible repository via PPA.
 # Go to the Jenkins instance and add this role to the Jenkins-Ec2 instance.
     => Select Jenkins instance --> Actions --> Security --> Modify IAM role
        Add a newly created Role and click on Update IAM role
-       ![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/09740b82-6213-44af-90e2-fc5f87cc671c)
+  
+  ![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/09740b82-6213-44af-90e2-fc5f87cc671c)
 
 ------------------------------------------------------------------------------------------------------------------------
 # Let's go to the Jenkins machine and add the Ansible Plugin
@@ -90,14 +91,14 @@ Step3: Add the ansible repository via PPA.
 
     => search for Ansible and install
 
-    ![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/db61c508-767a-40e1-be8c-b0542d9085da)
+![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/db61c508-767a-40e1-be8c-b0542d9085da)
 
 # Give this command in your Jenkins machine to find the path of your ansible which is used in the tool section of Jenkins.
     which ansible
 
     Copy that path and add it to the tools section of Jenkins at ansible installations.
     
-      ![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/8116d26e-ec7c-43fa-a8aa-5a83d701709d)
+![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/8116d26e-ec7c-43fa-a8aa-5a83d701709d)
 
 
 
