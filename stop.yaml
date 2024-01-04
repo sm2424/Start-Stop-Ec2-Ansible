@@ -19,7 +19,7 @@
        - botocore
   vars:
    instance_ids:
-       - i-0afa2f2543f475598
+       - i-001dcc4e691ea03a3
    region: ap-south-1
   tasks:
     - name: stop the instances
