@@ -1,3 +1,4 @@
+---
 - name: start instance
   hosts: localhost
   gather_facts: false
@@ -23,7 +24,8 @@
   tasks:
     - name: start the instances
       ec2_instance:
-       instance_ids: '{{ instance_ids}}'       region: '{{ region }}'
+       instance_ids: '{{ instance_ids}}'       
+       region: '{{ region }}'
        state: started
        wait: true
        vpc_subnet_id: subnet-09d57466a48d2af26
