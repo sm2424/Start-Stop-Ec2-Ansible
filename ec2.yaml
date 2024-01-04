@@ -1,0 +1,19 @@
+---
+- name: Manage EC2 Instances
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    region: ap-south-1
+    instance_id: "i-0afa2f2543f475598"  # Replace with your actual instance ID
+
+  tasks:
+    - name: Start EC2 Instance
+      amazon.aws.ec2_instance:
+        instance_ids: "{{ i-0afa2f2543f475598 }}"
+        state: started
+        region: "{{ ap-south-1 }}"
+      register: start_ec2
+      when: start_ec2 is not defined or start_ec2.changed
+
+
