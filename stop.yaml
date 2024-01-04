@@ -1,15 +1,30 @@
-- name: stop instance
+---
+- name: start instance
   hosts: localhost
   gather_facts: false
   connection: local
+  pre_tasks:
+
+    - name: Gather facts
+      setup:
+
+    - name: Print python version
+      debug:
+        msg: "Using Python {{ ansible_python_version }}"
+
+    - name: Install dependencies
+      shell: "/usr/bin/python3.10 -m pip install {{ item }}"
+      loop:
+       - boto3
+       - botocore
   vars:
    instance_ids:
-     - i-0afa2f2543f475598 
+     - - i-0afa2f2543f475598
    region: ap-south-1
   tasks:
     - name: start the instances
       ec2_instance:
-       instance_ids: '{{ instance_ids}}'
+       instance_ids: '{{ instance_ids}}'       
        region: '{{ region }}'
        state: stopped
        wait: true
