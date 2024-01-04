@@ -1,5 +1,5 @@
 ---
-- name: start instance
+- name: stop instance
   hosts: localhost
   gather_facts: false
   connection: local
@@ -19,10 +19,10 @@
        - botocore
   vars:
    instance_ids:
-     - - i-0afa2f2543f475598
+       - i-0afa2f2543f475598
    region: ap-south-1
   tasks:
-    - name: start the instances
+    - name: stop the instances
       ec2_instance:
        instance_ids: '{{ instance_ids}}'       
        region: '{{ region }}'
