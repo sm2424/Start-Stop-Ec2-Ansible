@@ -8,7 +8,7 @@
    region: ap-south-1
   tasks:
     - name: start the instances
-      ec2:
+      ec2_instance:
        instance_ids: '{{ instance_ids}}'
        region: '{{ region }}'
        state: started
