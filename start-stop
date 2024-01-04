@@ -1,0 +1,48 @@
+- name: Check instance status and act accordingly
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  pre_tasks:
+    - name: Gather facts
+      setup:
+
+    - name: Print Python version
+      debug:
+        msg: "Using Python {{ ansible_python_version }}"
+
+    - name: Install dependencies
+      shell: "/usr/bin/python3.10 -m pip install {{ item }}"
+      loop:
+        - boto3
+        - botocore
+
+  vars:
+    instance_ids:
+      - i-001dcc4e691ea03a3
+    region: ap-south-1
+
+  tasks:
+    - name: Check instance state
+      ec2_instance_info:
+        instance_ids: '{{ instance_ids }}'
+        region: '{{ region }}'
+      register: instance_info
+
+    - name: Determine action based on instance state
+      block:
+        - name: Stop instance if running
+          ec2_instance:
+            instance_ids: '{{ instance_ids }}'
+            region: '{{ region }}'
+            state: stopped
+            wait: true
+          when: instance_info.instances[0].state.name == 'running'
+
+        - name: Start instance if stopped
+          ec2_instance:
+            instance_ids: '{{ instance_ids }}'
+            region: '{{ region }}'
+            state: started
+            wait: true
+          when: instance_info.instances[0].state.name == 'stopped'
+      when: instance_info.instances[0].state.name in ['running', 'stopped']
