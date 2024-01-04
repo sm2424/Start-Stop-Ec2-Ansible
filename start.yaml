@@ -2,6 +2,20 @@
   hosts: localhost
   gather_facts: false
   connection: local
+  pre_tasks:
+
+    - name: Gather facts
+      setup:
+
+    - name: Print python version
+      debug:
+        msg: "Using Python {{ ansible_python_version }}"
+
+    - name: Install dependencies
+      shell: "/usr/bin/python3.10 -m pip install {{ item }}"
+      loop:
+       - boto3
+       - botocore
   vars:
    instance_ids:
      - i-001dcc4e691ea03a3
@@ -9,8 +23,7 @@
   tasks:
     - name: start the instances
       ec2_instance:
-       instance_ids: '{{ instance_ids}}'
-       region: '{{ region }}'
+       instance_ids: '{{ instance_ids}}'       region: '{{ region }}'
        state: started
        wait: true
        vpc_subnet_id: subnet-09d57466a48d2af26
