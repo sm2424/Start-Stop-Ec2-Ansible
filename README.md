@@ -62,7 +62,7 @@ Step3: Add the ansible repository via PPA.
 
 # let's create and attach an IAM role ec2 instance
     Create Roles
-    ![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/08a63bf7-065f-48df-b7a8-fd059ca9d1b5)
+![image](https://github.com/sm2424/Start-Stop-Ec2-Ansible/assets/91906122/08a63bf7-065f-48df-b7a8-fd059ca9d1b5)
   
 # Add permissions policies
   
