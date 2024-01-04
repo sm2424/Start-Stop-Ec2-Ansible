@@ -33,12 +33,15 @@ Launch an Ubuntu(22.04) T2 medium Instance
 ----------------------------------------------------------------------------------------------------------------------------------------------
 # Install Ansible and Python
 Step1:Update your system packages.
+    
     sudo apt-get update
     
 Step 2: First Install Required packages to install Ansible.
+
     sudo apt install software-properties-common
 
 Step3: Add the ansible repository via PPA.
+
     sudo add-apt-repository --yes --update ppa:ansible/ansible
 
 # Install Python3 for Ansible
