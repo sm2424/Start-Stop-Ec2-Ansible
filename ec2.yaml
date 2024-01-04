@@ -1,19 +1,21 @@
 ---
-- name: Manage EC2 Instances
+- name: Start sandbox instances
   hosts: localhost
-  connection: local
-  gather_facts: False
+  gather_facts: false
   vars:
+    instance_ids:
+      - 'i-0afa2f2543f475598'
+      
     region: ap-south-1
-    instance_id: "i-0afa2f2543f475598"  # Replace with your actual instance ID
-
   tasks:
-    - name: Start EC2 Instance
-      amazon.aws.ec2_instance:
-        instance_ids: "{{ i-0afa2f2543f475598 }}"
-        state: started
-        region: "{{ ap-south-1 }}"
-      register: start_ec2
-      when: start_ec2 is not defined or start_ec2.changed
-
-
+    - name: Start the sandbox instances
+      ec2:
+        instance_ids: '{{ i-0afa2f2543f475598 }}'
+        region: '{{ ap-south-1 }}'
+        state: running
+        wait: True
+        vpc_subnet_id: subnet-09d57466a48d2af26
+        assign_public_ip: yes
+  roles:
+    - do_neat_stuff
+    - do_more_neat_stuff
