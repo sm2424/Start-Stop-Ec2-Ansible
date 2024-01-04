@@ -4,17 +4,17 @@ pipeline {
         ansible 'ansible'
     }
     stages {
-        stage('cleanws') {
+        stage('Cleanws') {
             steps {
                 cleanWs()
             }
         }
-        stage('checkout'){
+        stage('Checkout'){
             steps{
                 git branch: 'main', url: 'https://github.com/sm2424/Start-Stop-Ec2-Ansible.git'
             }
         }
-        stage('ansible provision') {
+        stage('Ansible provision') {
           steps {
              // To suppress warnings when you execute the playbook    
              sh "pip install --upgrade requests==2.20.1"
